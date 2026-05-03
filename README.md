@@ -1,68 +1,16 @@
-# ✈️ Sistema de Cadastro de Aeronaves (Backend)
+# ✈️ API de Cadastro de Aeronaves
 
-## 📌 Descrição
-
-Este projeto é um backend desenvolvido em **Java com Spring Boot** para gerenciar o cadastro de aeronaves. Ele fornece uma API REST que permite realizar operações de **CRUD (Create, Read, Update, Delete)** sobre os dados das aeronaves.
-
-O sistema foi estruturado seguindo boas práticas de organização em camadas, facilitando manutenção, escalabilidade e integração com frontend (como React).
+API REST desenvolvida com **Spring Boot** para gerenciamento de aeronaves, oferecendo operações completas de **CRUD (Create, Read, Update, Delete)**.
 
 ---
 
 ## 🚀 Funcionalidades
 
-* ✅ Cadastrar aeronave
+* ✅ Criar aeronave
 * ✅ Listar todas as aeronaves
 * ✅ Buscar aeronave por ID
-* ✅ Atualizar aeronave
+* ✅ Atualizar dados
 * ✅ Deletar aeronave
-
----
-
-## 📦 Exemplo de Objeto (JSON)
-
-```json
-{
-  "id": 1,
-  "name": "Boeing 737",
-  "model": "737-800",
-  "manufacturer": "Boeing",
-  "year": 2015
-}
-```
-
----
-
-## 🔗 Endpoints da API
-
-### 📍 Criar aeronave
-
-```
-POST /aircraft
-```
-
-### 📍 Listar todas
-
-```
-GET /aircraft
-```
-
-### 📍 Buscar por ID
-
-```
-GET /aircraft/{id}
-```
-
-### 📍 Atualizar
-
-```
-PUT /aircraft/{id}
-```
-
-### 📍 Deletar
-
-```
-DELETE /aircraft/{id}
-```
 
 ---
 
@@ -70,60 +18,95 @@ DELETE /aircraft/{id}
 
 * Java 21
 * Spring Boot
-* Spring Web
 * Spring Data JPA
-* Banco de dados (ex: PostgreSQL / H2 / Supabase)
+* PostgreSQL
 * Maven
 
 ---
 
-## 🔌 Integração com Frontend
+## 📂 Estrutura do Projeto
 
-O frontend (ex: React) se conecta ao backend através de requisições HTTP.
-
-Exemplo usando `fetch`:
-
-```javascript
-fetch("http://localhost:8080/aircraft")
-  .then(response => response.json())
-  .then(data => console.log(data));
+```id="struct1"
+src/main/java/com/seuprojeto
+ ├── controller     # Controladores REST
+ ├── service        # Regras de negócio
+ ├── repository     # Acesso ao banco (JPA)
+ └── model          # Entidades (Aeronave)
 ```
 
 ---
 
-## ▶️ Como Executar o Projeto
+## 🔗 Endpoints da API
 
-1. Clone o repositório:
-
-```bash
-git clone <url-do-repositorio>
-```
-
-2. Acesse a pasta:
-
-```bash
-cd nome-do-projeto
-```
-
-3. Execute o projeto:
-
-```bash
-./mvnw spring-boot:run
-```
-
-ou pela IDE (IntelliJ / Eclipse)
+| Método | Endpoint        | Descrição     |
+| ------ | --------------- | ------------- |
+| GET    | /aeronaves      | Listar todas  |
+| GET    | /aeronaves/{id} | Buscar por ID |
+| POST   | /aeronaves      | Criar         |
+| PUT    | /aeronaves/{id} | Atualizar     |
+| DELETE | /aeronaves/{id} | Deletar       |
 
 ---
 
-## 📄 Observações
+## 📌 Exemplo de JSON
 
-* Certifique-se de configurar corretamente o banco de dados no `application.properties`.
-* O projeto pode ser expandido com autenticação, validações e documentação (Swagger).
+### 🔹 Criar/Atualizar Aeronave
+
+```json id="json1"
+{
+  "name": "Boeing 737",
+  "model": "737-800",
+  "manufacturer": "Boeing",
+  "year": 2015
+}
+```
+## 🌐 Acesso à API
+
+```id="url1"
+http://localhost:8080/aeronaves
+```
+
+---
+
+## 🧪 Testando a API
+
+Você pode usar:
+
+* Postman
+* Insomnia
+* Thunder Client (VS Code)
+
+---
+
+## 🧠 Conceitos Aplicados
+
+* Arquitetura em camadas (Controller, Service, Repository)
+* REST API
+* Persistência com JPA/Hibernate
+* Integração com banco de dados relacional
+
+---
+
+## ⚠️ Tratamento de Erros (melhoria futura)
+
+Sugestões para evolução:
+
+* Validação com `@Valid`
+* Exceptions customizadas
+* Retornos padronizados (DTOs)
+
+---
+
+## 📌 Melhorias Futuras
+
+* 🔐 Autenticação com JWT
+* 📄 Paginação e filtros
+* 📊 Logs e monitoramento
+* 🌐 Deploy em cloud (AWS / Render)
 
 ---
 
 ## 👨‍💻 Autor
 
-Projeto desenvolvido para fins de estudo e prática de desenvolvimento backend com Java.
+Desenvolvido por Enzo Borges
 
----
